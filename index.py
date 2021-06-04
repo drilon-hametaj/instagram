@@ -9,10 +9,7 @@ from function.utility import attesa
 from function.utility import monetina
 
 #qui ci vanno i nomi dei profili instagram su cui far lavorare il bot
-profili = ['cristiano',
-           'messi',
-           'ecc...'
-           ]
+profili = ['ingegneri_in_borsa','startingfinance','investirecomeimigliori','gabriele.galletta','renegade.insider.finanza','tmlplanet','trash_italiano','fedez','will_ita','pastorizianeverdiesreal','marcomontemagno', 'the_investment_boss', 'mindsettati', 'imprenditore_tips', 'psicologiavincente', 'obiettivo1milione', 'warrenbuffettitalia']
 user_agent = "Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_0 like Mac OS X; en-us) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7A341 Safari/528.16"
 profile = webdriver.FirefoxProfile()
 profile.set_preference("general.useragent.override", user_agent)
@@ -49,7 +46,7 @@ with open('register.csv', 'w', newline='') as file:
                         time.sleep(5)
                         try:
                             #clicco l'immagine del profilo per leggerne i commenti
-                            driver.find_element_by_xpath('/html/body/div[1]/section/main/div/div/article/div[2]/div[1]/div[2]/div[1]').click()
+                            driver.find_element_by_xpath('/html/body/div[1]/section/main/div/div/article/div[3]/div[1]/div/div[2]/div[1]/a').click()
                             time.sleep(5)
                             #prendo lista commenti dell'immagine
                             lista_commenti = driver.find_elements_by_class_name('Mr508')
@@ -94,9 +91,9 @@ with open('register.csv', 'w', newline='') as file:
                                     driver.get(link_profilo)
                                     try:
                                         if monetina() == 1 and limite_follow > 0:
-                                            testo_segui = driver.find_element_by_xpath('/html/body/div[1]/section/main/div/header/section/div[2]/div/span/span[1]/button').text
+                                            testo_segui = driver.find_element_by_xpath('/html/body/div[1]/section/main/div/header/section/div[2]/div/div/div/span/span[1]/button').text
                                             if testo_segui == 'Segui':
-                                                driver.find_element_by_xpath('/html/body/div[1]/section/main/div/header/section/div[2]/div/span/span[1]/button').click()
+                                                driver.find_element_by_xpath('/html/body/div[1]/section/main/div/header/section/div[2]/div/div/div/span/span[1]/button').click()
                                                 limite_follow = limite_follow - 1
                                                 time.sleep(5)
                                     except:
@@ -111,7 +108,7 @@ with open('register.csv', 'w', newline='') as file:
                                             if monetina() == 1 and conteggio_like_immagini < 3:
                                                 driver.get(imm)
                                                 time.sleep(5)
-                                                driver.find_element_by_xpath('/html/body/div[1]/section/main/div/div/article/div[2]/section[1]/span[1]/button').click()
+                                                driver.find_element_by_xpath('/html/body/div[1]/section/main/div/div/article/div[3]/section[1]/span[1]/button').click()
                                                 limite_like = limite_like - 1
                                                 conteggio_like_immagini = conteggio_like_immagini + 1
                                                 time.sleep(3)
